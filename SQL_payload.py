@@ -3,11 +3,12 @@ import requests
 # Prompt the user for the target URL
 target_url = input('Enter the target URL: ')
 
-# Prompt the user for the data to be sent in the POST request
-data = input('Enter the data to be sent in the POST request (format: key1=value1&key2=value2): ')
+# Prompt the user for the name of the file containing the data to be sent in the POST request
+data_file = input('Enter the name of the file containing the data to be sent in the POST request: ')
 
-# Split the data string into a dictionary
-data = dict(item.split('=') for item in data.split('&'))
+# Read the data from the file and split it into a dictionary
+with open(data_file, 'r') as f:
+  data = dict(item.split('=') for item in f.read().split('&'))
 
 # Prompt the user for the payload to be injected
 payload = input('Enter the payload to be injected: ')
