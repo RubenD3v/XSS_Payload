@@ -31,9 +31,9 @@ check_xss() {
     # Submit the form and check for the alert
     local response=$(send_request "$url")
     if [[ $response =~ alert\( ]]; then
-      echo "XSS vulnerability found!"
+      echo "XSS vulnerability found!" >> result.txt
     else
-      echo "No XSS vulnerability found."
+      echo "No XSS vulnerability found." >> result.txt
     fi
   done
 }
